@@ -4,12 +4,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import sber.dad.dbexample.dao.BookDaoBean;
-import sber.dad.config.MyDBConfigContext;
-import sber.dad.model.Book;
+import sber.dad.dbexample.model.Book;
 
 @SpringBootApplication
 @RequiredArgsConstructor

@@ -1,4 +1,4 @@
-package sber.dad.model;
+package sber.dad.dbexample.model;
 
 import lombok.*;
 

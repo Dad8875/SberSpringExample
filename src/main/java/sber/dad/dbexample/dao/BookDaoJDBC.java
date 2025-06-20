@@ -1,7 +1,7 @@
 package sber.dad.dbexample.dao;
 
 import sber.dad.dbexample.db.DBApp;
-import sber.dad.model.Book;
+import sber.dad.dbexample.model.Book;
 
 import java.sql.*;
 

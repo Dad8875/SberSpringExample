@@ -2,7 +2,7 @@ package sber.dad.dbexample.dao;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import sber.dad.model.Book;
+import sber.dad.dbexample.model.Book;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
