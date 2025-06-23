@@ -12,7 +12,8 @@ public enum Genre {
 
     private final String description;
 
-    Genre(String genre) {
-        this.description = genre;
+    Genre(String description) {
+        this.description = description;
     }
 }
+
