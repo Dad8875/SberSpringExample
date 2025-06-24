@@ -14,7 +14,7 @@ import java.util.Set;
 @Entity
 @Table(name = "authors")
 @SequenceGenerator(name = "default_generator", sequenceName = "author_seq", allocationSize = 1)
-public class Author extends GenericModel{
+public class Author extends GenericModel {
 
     @Column(name = "fio", nullable = false)
     private String fio;
