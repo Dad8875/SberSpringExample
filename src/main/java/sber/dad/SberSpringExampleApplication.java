@@ -1,34 +1,14 @@
 package sber.dad;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-import sber.dad.dbexample.dao.BookDaoBean;
-import sber.dad.dbexample.model.Book;
+
 
 @SpringBootApplication
-@RequiredArgsConstructor
-public class SberSpringExampleApplication implements CommandLineRunner {
-
-    private final BookDaoBean bookDaoBean;
-    private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+public class SberSpringExampleApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(SberSpringExampleApplication.class, args);
-    }
-
-    @Override
-    public void run(String... args) throws Exception {
-        Book bookById = bookDaoBean.findBookById(4);
-
-        namedParameterJdbcTemplate.query("select * from books", (rs, rowNum) ->
-                new Book(rs.getInt("id"),
-                        rs.getString("title"),
-                        rs.getString("author"),
-                        rs.getDate("date_added"))
-        ).forEach(System.out::println);
     }
 }
 
