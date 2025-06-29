@@ -16,7 +16,11 @@ import java.time.LocalDateTime;
 @RequiredArgsConstructor
 public abstract class GenericController<T extends GenericModel> {
 
-    private final GenericRepository<T> repository;
+    private  GenericRepository<T> repository;
+
+    protected GenericController(GenericRepository<T> repository) {
+        this.repository = repository;
+    }
 
 
     @Operation(description = "Получить автора по ID", method = "getEntityById")
