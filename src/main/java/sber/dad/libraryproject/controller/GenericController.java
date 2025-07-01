@@ -1,7 +1,6 @@
 package sber.dad.libraryproject.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
-import lombok.RequiredArgsConstructor;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -13,28 +12,26 @@ import sber.dad.libraryproject.repository.GenericRepository;
 import java.time.LocalDateTime;
 
 @RestController
-@RequiredArgsConstructor
 public abstract class GenericController<T extends GenericModel> {
 
-    private  GenericRepository<T> repository;
+    private final GenericRepository<T> repository;
 
-    protected GenericController(GenericRepository<T> repository) {
+    @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
+    public GenericController(GenericRepository<T> repository) {
         this.repository = repository;
     }
 
-
-    @Operation(description = "Получить автора по ID", method = "getEntityById")
+    @Operation(description = "Получить по ID", method = "getEntityById")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<T> geEntityById(@PathVariable(value = "id") Long id) {
         return ResponseEntity.status(HttpStatus.OK).body(repository.findById(id).orElseThrow(() ->
-                new ResourceNotFoundException("Author with name " + id + " not found!")
+                new ResourceNotFoundException("Entity with id: " + id + " not found!")
         ));
     }
 
     @Operation(description = "Добавить", method = "createEntity")
-    @RequestMapping(value = "/add", method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE,
+    @RequestMapping(value = "/add", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<T> createEntity(@RequestBody T t) {
         t.setCreatedWhen(LocalDateTime.now());
@@ -55,5 +52,6 @@ public abstract class GenericController<T extends GenericModel> {
     public void deleteEntity(@PathVariable(value = "id") Long id) {
         repository.deleteById(id);
     }
+
 }
 
