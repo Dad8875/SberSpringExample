@@ -1,7 +1,5 @@
 package sber.dad.libraryproject.model;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,7 +15,7 @@ import java.util.Set;
 @Entity
 @Table(name = "books")
 @SequenceGenerator(name = "default_generator", sequenceName = "book_seq", allocationSize = 1)
-@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "id")
+//@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "id")
 public class Book extends GenericModel {
 
     @Column(name = "title", nullable = false)
@@ -48,12 +46,15 @@ public class Book extends GenericModel {
     @Enumerated
     private Genre genre;
 
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST},  fetch = FetchType.LAZY)
     @JoinTable(name = "books_authors",
             joinColumns = @JoinColumn(name = "book_id"),
             foreignKey = @ForeignKey(name = "FK_BOOKS_AUTHORS"),
             inverseJoinColumns = @JoinColumn(name = "author_id"),
             inverseForeignKey = @ForeignKey(name = "FK_AUTHORS_BOOKS"))
     private Set<Author> authors;
+
+    @OneToMany(mappedBy = "book", cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    private Set<BookRentInfo> bookRentInfos;
 }
 
