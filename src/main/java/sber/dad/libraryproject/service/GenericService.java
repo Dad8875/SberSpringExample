@@ -13,34 +13,34 @@ import java.util.List;
 @Service
 public abstract class GenericService<T extends GenericModel, N extends GenericDTO> {
 
-    protected final GenericRepository<T> repository;
-    protected final GenericMapper<T, N> mapper;
+    protected final GenericRepository<T> genericRepository;
+    protected final GenericMapper<T, N> genericMapper;
 
     @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
-    public GenericService(GenericRepository<T> repository, GenericMapper<T, N> mapper) {
-        this.repository = repository;
-        this.mapper = mapper;
+    public GenericService(GenericRepository<T> genericRepository, GenericMapper<T, N> genericMapper) {
+        this.genericRepository = genericRepository;
+        this.genericMapper = genericMapper;
     }
 
     public List<N> getAll() {
-        return mapper.toDTOs(repository.findAll());
+        return genericMapper.toDTOs(genericRepository.findAll());
     }
 
     public N getOne(Long id) {
-        return mapper.toDTO(repository.findById(id)
+        return genericMapper.toDTO(genericRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Entity with id " + id + " not found!")));
     }
 
     public N create(N n) {
-        return mapper.toDTO(repository.save(mapper.toEntity(n)));
+        return genericMapper.toDTO(genericRepository.save(genericMapper.toEntity(n)));
     }
 
     public N update(N n) {
-        return mapper.toDTO(repository.save(mapper.toEntity(n)));
+        return genericMapper.toDTO(genericRepository.save(genericMapper.toEntity(n)));
     }
 
     public void delete(Long id) {
-        repository.deleteById(id);
+        genericRepository.deleteById(id);
     }
 }
 

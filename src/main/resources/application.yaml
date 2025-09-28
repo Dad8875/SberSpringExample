@@ -7,8 +7,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/sber_db
     username: postgres
-    password: ABHczkfGZogjGH1ya4ly
-#    password: postgres
+    password: postgres
     driver-class-name: org.postgresql.Driver
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect

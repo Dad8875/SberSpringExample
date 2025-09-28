@@ -17,9 +17,9 @@ public class UserService extends GenericService<User, UserDTO> {
 
     @Override
     public UserDTO create(UserDTO userDTO) {
-        RoleDTO  roleDTO = new RoleDTO();
+        RoleDTO roleDTO = new RoleDTO();
         roleDTO.setId(1L);
         userDTO.setRole(roleDTO);
-        return mapper.toDTO(repository.save(mapper.toEntity(userDTO)));
+        return genericMapper.toDTO(genericRepository.save(genericMapper.toEntity(userDTO)));
     }
 }
