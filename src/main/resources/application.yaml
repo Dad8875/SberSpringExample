@@ -1,7 +1,7 @@
 server:
   port: 9090
-  servlet:
-    context-path: "/api/v1"
+#  servlet:
+#    context-path: "/api/v1"
 
 spring:
   datasource:
@@ -15,5 +15,6 @@ spring:
     generate-ddl: true
     hibernate:
       ddl-auto: update
-
+  thymeleaf:
+    prefix: classpath:/templates/
 
