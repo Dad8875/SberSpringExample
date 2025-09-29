@@ -7,6 +7,7 @@ import sber.dad.libraryproject.mapper.GenericMapper;
 import sber.dad.libraryproject.model.GenericModel;
 import sber.dad.libraryproject.repository.GenericRepository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -32,6 +33,8 @@ public abstract class GenericService<T extends GenericModel, N extends GenericDT
     }
 
     public N create(N n) {
+        n.setCreatedBy("ADMIN");
+        n.setCreatedWhen(LocalDateTime.now());
         return genericMapper.toDTO(genericRepository.save(genericMapper.toEntity(n)));
     }
 

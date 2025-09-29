@@ -5,7 +5,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import sber.dad.libraryproject.model.Genre;
 
-import java.time.LocalDate;
 import java.util.Set;
 
 
@@ -15,21 +14,13 @@ import java.util.Set;
 public class BookDTO extends GenericDTO {
 
     private String title;
-
-    private LocalDate publishDate;
-
+    private String publishDate;
     private Integer pageCount;
-
     private Integer amount;
-
     private String storagePlace;
-
     private String onlineCopy;
-
     private String description;
-
     private Genre genre;
-
     private Set<Long> authorsIds;
 
 }
