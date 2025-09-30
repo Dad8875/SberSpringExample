@@ -15,7 +15,7 @@ import java.util.List;
 
 
 @Controller
-@RequestMapping("books")
+@RequestMapping("/books")
 @RequiredArgsConstructor
 public class MVCBookController {
 
