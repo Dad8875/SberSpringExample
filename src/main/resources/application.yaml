@@ -1,8 +1,14 @@
 server:
-  port: 9090
-#  servlet:
-#    context-path: "/api/v1"
-
+  port: 8585
+  servlet:
+    context-path: "/"
+    #    context-path: "/api/v1"
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  error:
+    path: /error
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/sber_db
@@ -15,6 +21,26 @@ spring:
     generate-ddl: true
     hibernate:
       ddl-auto: update
+    properties:
+      jakarta:
+        persistence:
+          shareCache:
+            mode: UNSPECIFIED
+      hibernate:
+        connection:
+          characterEncoding: utf8
+          CharSet: UTF-8
+          useUnicode: true
   thymeleaf:
     prefix: classpath:/templates/
+    check-template: true
+    check-template-location: true
+    encoding: UTF-8
+    mode: HTML
+  security:
+    user:
+      name: admin
+      #password = admin
+      password: $2a$10$IRAa2L42Bz011.za0K6QrevQX2cGHIsbfouKkGdP9OU6S6klTsJn6
+      roles: ADMIN
 
