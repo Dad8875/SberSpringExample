@@ -10,10 +10,15 @@ import java.time.LocalDateTime;
 public abstract class GenericDTO {
 
     private Long id;
+
     private String createdBy;
+
     private LocalDateTime createdWhen;
+
 //    private boolean isDeleted;
+
 //    private String deletedBy;
+
 //    private LocalDateTime deletedWhen;
 
 }

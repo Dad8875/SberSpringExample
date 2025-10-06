@@ -51,5 +51,6 @@ public class BookRentInfoMapper extends GenericMapper<BookRentInfo, BookRentInfo
     protected Set<Long> getIds(BookRentInfo entity) {
         throw  new UnsupportedOperationException("Not supported yet.");
     }
+
 }
 

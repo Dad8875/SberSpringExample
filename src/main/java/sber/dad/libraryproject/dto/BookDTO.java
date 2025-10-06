@@ -14,13 +14,21 @@ import java.util.Set;
 public class BookDTO extends GenericDTO {
 
     private String title;
+
     private String publishDate;
+
     private Integer pageCount;
+
     private Integer amount;
+
     private String storagePlace;
+
     private String onlineCopy;
+
     private String description;
+
     private Genre genre;
+
     private Set<Long> authorsIds;
 
 }
