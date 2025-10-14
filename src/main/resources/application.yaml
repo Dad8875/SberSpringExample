@@ -2,7 +2,6 @@ server:
   port: 8585
   servlet:
     context-path: "/"
-    #    context-path: "/api/v1"
     encoding:
       charset: UTF-8
       enabled: true
@@ -13,7 +12,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/sber_db
     username: postgres
-    password: postgres
+    password: ABHczkfGZogjGH1ya4ly
     driver-class-name: org.postgresql.Driver
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect

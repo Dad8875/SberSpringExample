@@ -1,5 +1,6 @@
 package sber.dad.mvc.controller;
 
+import io.swagger.v3.oas.annotations.Hidden;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +18,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/books")
 @RequiredArgsConstructor
+@Hidden
 public class MVCBookController {
 
     private final BookService bookService;
