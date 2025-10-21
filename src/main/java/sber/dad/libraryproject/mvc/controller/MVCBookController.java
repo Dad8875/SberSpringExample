@@ -1,4 +1,4 @@
-package sber.dad.mvc.controller;
+package sber.dad.libraryproject.mvc.controller;
 
 import io.swagger.v3.oas.annotations.Hidden;
 import lombok.RequiredArgsConstructor;

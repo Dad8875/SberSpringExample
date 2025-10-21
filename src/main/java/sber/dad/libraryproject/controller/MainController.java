@@ -1,4 +1,4 @@
-package sber.dad.mvc.controller;
+package sber.dad.libraryproject.controller;
 
 import io.swagger.v3.oas.annotations.Hidden;
 import org.springframework.stereotype.Controller;

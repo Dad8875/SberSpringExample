@@ -1,8 +1,9 @@
 package sber.dad.libraryproject.config;
 
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -10,6 +11,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.security.web.firewall.HttpFirewall;
 import org.springframework.security.web.firewall.StrictHttpFirewall;
+import sber.dad.libraryproject.service.userdetails.CustomUserDetailsService;
 
 import java.util.Arrays;
 import java.util.List;
@@ -20,10 +22,10 @@ import static sber.dad.libraryproject.constants.UserRoleConstants.LIBRARIAN;
 
 @Configuration
 @EnableWebSecurity
-@RequiredArgsConstructor
 public class WebSecurityConfig {
 
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final CustomUserDetailsService customUserDetailsService;
 
     private final List<String> RESOURCES_WHITE_LIST = List.of(
             "/resources/**",
@@ -41,6 +43,12 @@ public class WebSecurityConfig {
             "/users/registration",
             "/users/change-password",
             "/users/remember-password");
+
+
+    public WebSecurityConfig(BCryptPasswordEncoder bCryptPasswordEncoder, CustomUserDetailsService customUserDetailsService) {
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+        this.customUserDetailsService = customUserDetailsService;
+    }
 
     //https://docs.spring.io/spring-security/reference/servlet/exploits/firewall.html
     @Bean
@@ -81,5 +89,11 @@ public class WebSecurityConfig {
         return http.build();
 
     }
-}
+
+    @Autowired
+    protected void configureGlobal(AuthenticationManagerBuilder  auth) throws Exception {
+        auth.userDetailsService(customUserDetailsService).passwordEncoder(bCryptPasswordEncoder);
+    }
+
+ }
 

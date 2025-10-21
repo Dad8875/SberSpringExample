@@ -12,7 +12,8 @@ import java.util.Set;
 
 
 @Entity
-@Table(name = "users")
+@Table(name = "users", uniqueConstraints = {@UniqueConstraint(name = "uniqueEmail", columnNames = "email"),
+                                            @UniqueConstraint(name = "uniqueLogin", columnNames = "login")})
 @Getter
 @Setter
 @NoArgsConstructor
