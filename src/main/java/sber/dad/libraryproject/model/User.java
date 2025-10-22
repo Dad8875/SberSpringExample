@@ -48,7 +48,7 @@ public class User extends GenericModel {
     @Column(name = "address")
     private String address;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "role_id", nullable = false,
             foreignKey = @ForeignKey(name = "FK_USER_ROLES"))
     private Role role;

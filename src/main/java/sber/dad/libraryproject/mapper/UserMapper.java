@@ -7,6 +7,7 @@ import sber.dad.libraryproject.dto.UserDTO;
 import sber.dad.libraryproject.model.GenericModel;
 import sber.dad.libraryproject.model.User;
 import sber.dad.libraryproject.repository.BookRentInfoRepository;
+import sber.dad.libraryproject.utils.DateFormatter;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -30,7 +31,8 @@ public class UserMapper extends GenericMapper<User, UserDTO> {
         modelMapper.createTypeMap(User.class, UserDTO.class)
                 .addMappings(m -> m.skip(UserDTO::setUserBooksRent)).setPostConverter(toDTOConverter());
         modelMapper.createTypeMap(UserDTO.class, User.class)
-                .addMappings(m -> m.skip(User::setBookRentInfos)).setPostConverter(toEntityConverter());
+                .addMappings(m -> m.skip(User::setBookRentInfos)).setPostConverter(toEntityConverter())
+                .addMappings(m -> m.skip(User::setBirthDate)).setPostConverter(toEntityConverter());
     }
 
     @Override
@@ -40,6 +42,7 @@ public class UserMapper extends GenericMapper<User, UserDTO> {
         } else {
             destination.setBookRentInfos(Collections.emptySet());
         }
+        destination.setBirthDate(DateFormatter.formatStringToDate(source.getBirthDate()));
     }
 
     @Override

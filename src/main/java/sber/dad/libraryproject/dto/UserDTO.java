@@ -21,7 +21,7 @@ public class UserDTO extends GenericDTO {
 
     private String email;
 
-    private LocalDate birthDate;
+    private String birthDate;
 
     private String firstName;
 

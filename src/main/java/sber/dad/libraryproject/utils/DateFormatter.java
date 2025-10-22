@@ -9,7 +9,7 @@ public class DateFormatter {
 
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-    private static LocalDate formatStringToDate(String date) {
+    public static LocalDate formatStringToDate(String date) {
         return LocalDate.parse(date, FORMATTER);
     }
 

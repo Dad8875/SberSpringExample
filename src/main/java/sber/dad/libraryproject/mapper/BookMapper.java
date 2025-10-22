@@ -7,13 +7,11 @@ import sber.dad.libraryproject.dto.BookDTO;
 import sber.dad.libraryproject.model.Book;
 import sber.dad.libraryproject.model.GenericModel;
 import sber.dad.libraryproject.repository.AuthorRepository;
+import sber.dad.libraryproject.utils.DateFormatter;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 
@@ -43,9 +41,7 @@ public class BookMapper extends GenericMapper<Book, BookDTO> {
         } else {
             destination.setAuthors(Collections.emptySet());
         }
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDate date = LocalDate.parse(source.getPublishDate(), formatter);
-        destination.setPublishDate(date);
+        destination.setPublishDate(DateFormatter.formatStringToDate(source.getPublishDate()));
     }
 
     @Override

@@ -9,6 +9,7 @@ import sber.dad.libraryproject.model.User;
 import sber.dad.libraryproject.repository.UserRepository;
 
 import java.time.LocalDateTime;
+import java.util.Locale;
 
 
 @Service
@@ -41,5 +42,6 @@ public class UserService extends GenericService<User, UserDTO> {
     public UserDTO getUserByEmail(String email) {
         return genericMapper.toDTO(((UserRepository) genericRepository).findUserByEmail(email));
     }
+
 }
 
